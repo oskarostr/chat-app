@@ -1,6 +1,8 @@
 function LogIn() {
     return (
-        <h1>Log in</h1>
+        <div className="log-in">
+            <h1>Log in</h1>
+        </div>
     )
 }
 
