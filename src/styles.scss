@@ -12,4 +12,54 @@
     justify-content: center;
     align-items: center;
     background-color: #232323;
+
+    button {
+        padding: 1.5rem 3rem;
+        font-size: 2rem;
+        background-color: #fff;
+        border: none;
+    }
+}
+
+.chat__room {
+    nav {
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        background-color: #232323;
+
+        h2 {
+            margin-left: 3rem;
+            color: #fff;
+        }
+
+        button {
+            margin-left: auto;
+            height: 100%;
+            padding: 0 1rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .chat__box {
+        height: 100%;
+        
+        .inputs {
+            height: 5vh;
+            display: flex;
+
+            input {
+                width: 100%;
+                border: none;
+                background-color: #232323;
+            }
+
+            button {
+                width: 5vw;
+                border: none;
+            }
+        }
+    }
 }
