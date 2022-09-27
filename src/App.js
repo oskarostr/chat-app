@@ -22,11 +22,12 @@ function App() {
       appId: "1:151506133940:web:92e1feb552157ff94988e1"
     }
   )
-  
+
   const auth = getAuth(app)
   const firestore = getFirestore(app)
 
   const [user] = useAuthState(auth)
+  console.log(user)
 
   async function getMessages(db) {
     const messagesCol = collection(db, 'messages')
@@ -36,12 +37,12 @@ function App() {
   }
 
   const msgs = getMessages(firestore)
-  console.log(msgs)
+  //console.log(msgs)
   
   return (
     <div className="App">
       <section>
-        {user ? <ChatRoom auth={auth} /> : <LogIn auth={auth}/>}
+        {user ? <ChatRoom auth={auth} firestore={firestore} user={user} /> : <LogIn auth={auth}/>}
       </section>
     </div>
   );
