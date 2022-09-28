@@ -4,8 +4,8 @@ import './styles.scss'
 import ChatRoom from "./components/ChatRoom";
 import LogIn from "./components/LogIn";
 
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 import { initializeApp } from "firebase/app";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -28,15 +28,6 @@ function App() {
 
   const [user] = useAuthState(auth)
   console.log(user)
-
-  async function getMessages(db) {
-    const messagesCol = collection(db, 'messages')
-    const messagesSnap = await getDocs(messagesCol)
-    const messagesList = messagesSnap.docs.map(doc => doc.data())
-    return messagesList
-  }
-
-  const msgs = getMessages(firestore)
   //console.log(msgs)
   
   return (

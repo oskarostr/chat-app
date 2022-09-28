@@ -1,9 +1,19 @@
 import { useState } from "react"
 import { signOut } from "firebase/auth"
-import { doc, setDoc } from "firebase/firestore"
+import { doc, setDoc, collection } from "firebase/firestore"
+import { nanoid } from 'nanoid'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import ChatMsg from "./ChatMsg"
 
 function ChatRoom(props) {
     const [message, setMessage] = useState('')
+
+    const messagesRef = collection(props.firestore, 'messages')
+    //const query = messagesRef.orderBy('createdAt').limit(25)
+
+    const [messages] = useCollectionData(messagesRef, {idField: 'id'})
+
+    console.log(messages)
 
     const signOutEvent = () => {
         signOut(props.auth)
@@ -12,7 +22,7 @@ function ChatRoom(props) {
     }
 
     async function addData() {
-        await setDoc(doc(props.firestore, "messages", props.user.metadata.createdAt), {
+        await setDoc(doc(props.firestore, "messages", nanoid()), {
             createdAt: props.user.metadata.creationTime,
             photoUrl: props.user.photoURL,
             text: message,
@@ -32,6 +42,7 @@ function ChatRoom(props) {
             </nav>
 
             <div className="chat__box">
+            {/*messages && messages.map(msg => <ChatMsg key={msg.id} message={msg}/>)*/}
                 <div className="inputs">
                     <input type="text" onChange={(e) => updateMessage(e)}></input>
                     <button onClick={() => addData()}>🤙</button>
