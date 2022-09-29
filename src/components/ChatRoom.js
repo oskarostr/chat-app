@@ -11,9 +11,7 @@ function ChatRoom(props) {
     const messagesRef = collection(props.firestore, 'messages')
     //const query = messagesRef.orderBy('createdAt').limit(25)
 
-    const [messages] = useCollectionData(messagesRef, {idField: 'id'})
-
-    console.log(messages)
+    const [messages] = useCollectionData(messagesRef, { idField: 'id' })
 
     const signOutEvent = () => {
         signOut(props.auth)
@@ -42,11 +40,12 @@ function ChatRoom(props) {
             </nav>
 
             <div className="chat__box">
-            {/*messages && messages.map(msg => <ChatMsg key={msg.id} message={msg}/>)*/}
-                <div className="inputs">
-                    <input type="text" onChange={(e) => updateMessage(e)}></input>
-                    <button onClick={() => addData()}>🤙</button>
-                </div>
+                {messages && messages.map(msg => <ChatMsg key={msg.id} message={msg} />)}
+            </div>
+
+            <div className="inputs">
+                <input type="text" onChange={(e) => updateMessage(e)}></input>
+                <button onClick={() => addData()}>🤙</button>
             </div>
 
         </div>

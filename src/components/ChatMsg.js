@@ -1,6 +1,11 @@
 function ChatMsg(props) {
+    console.log(props)
+            
     return (
-        <h1>{props.message}</h1>
+        <div className="message">
+            <img src={props.message.photoUrl}></img>
+            <h1>{props.message.text}</h1>
+        </div>
     )
 }
 
