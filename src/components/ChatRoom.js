@@ -40,7 +40,7 @@ function ChatRoom(props) {
             </nav>
 
             <div className="chat__box">
-                {messages && messages.map(msg => <ChatMsg key={msg.id} message={msg} />)}
+                {messages && messages.map(msg => <ChatMsg key={msg.id} message={msg} user={props.user}/>)}
             </div>
 
             <div className="inputs">
