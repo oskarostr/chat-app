@@ -1,3 +1,2 @@
 # Chat app
-Simple chat app
-(link)[https://chat-app-380b7.web.app/]
+Simple chat app [page](https://chat-app-380b7.web.app/){:target="_blank"}
